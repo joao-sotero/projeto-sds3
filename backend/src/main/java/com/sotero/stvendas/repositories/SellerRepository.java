@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.sotero.stvendas.entities.Seller;
 
-public interface sellerRepository extends JpaRepository<Seller, Long>{
+public interface SellerRepository extends JpaRepository<Seller, Long>{
 
 }
