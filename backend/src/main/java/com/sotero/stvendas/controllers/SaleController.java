@@ -3,24 +3,41 @@ package com.sotero.stvendas.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sotero.stvendas.DTO.SellerDTO;
-import com.sotero.stvendas.service.SellerService;
+import com.sotero.stvendas.DTO.SaleDTO;
+import com.sotero.stvendas.DTO.SaleSuccessDTO;
+import com.sotero.stvendas.DTO.SaleSumDTO;
+import com.sotero.stvendas.service.SaleService;
 
 @RestController
-@RequestMapping(value = "/sellers")
+@RequestMapping(value = "/sales")
 public class SaleController {
 
 	@Autowired
-	private SellerService service;
+	private SaleService service;
+	
 	
 	@GetMapping
-	public ResponseEntity<List<SellerDTO>> fundAll(){
-		List<SellerDTO> list = service.findAll();
+	public ResponseEntity<Page<SaleDTO>> findAll(Pageable pageable){
+		Page<SaleDTO> list = service.findAll(pageable);
+		return ResponseEntity.ok(list);
+	}
+	
+	@GetMapping(value = "/amount-by-seller")
+	public ResponseEntity<List<SaleSumDTO>> amountGroupedBySeller(){
+		List<SaleSumDTO> list = service.amountGroupedBySeller();
+		return ResponseEntity.ok(list);
+	}
+	
+	@GetMapping(value = "/success-by-seller")
+	public ResponseEntity<List<SaleSuccessDTO>> succesGroupedBySeller(){
+		List<SaleSuccessDTO> list = service.successGroupedBySeller();
 		return ResponseEntity.ok(list);
 	}
 	
