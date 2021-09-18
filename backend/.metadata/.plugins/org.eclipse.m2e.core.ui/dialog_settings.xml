@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="C:\Users\joaos\Desktop\projeto-sds3\backend"/>
 			<item value="C:\Users\joao.vieira.silva\Documents\ws-dev\projeto-sds3\backend"/>
 		</list>
 		<list key="projectNameTemplate">
